@@ -14,10 +14,18 @@ async function signup(req, res) {
     const token = createJWT(user);
     res.json({ token });
   } catch (err) {
-    // Probably a duplicate email
-    res.status(400).json(err);
+    console.error('Signup Error:', err);
+
+    // Check for duplicate email error
+    if (err.code === 11000) {
+      res.status(400).json({ error: 'Email already exists' });
+    } else {
+      res.status(400).json({ error: 'Error during signup' });
+    }
   }
 }
+
+
 
 async function login(req, res) {
  
