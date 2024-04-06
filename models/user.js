@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-
 // res.json with a user document in it!
 // so our signup controller and login controller
 userSchema.set("toJSON", {
@@ -51,7 +50,7 @@ userSchema.pre("save", function (next) {
     if (err) return next(err);
     // replace the user provided password with the hash
     user.password = hash;
-    next(); // continue doing what you were doing, put the user 
+    next(); // continue doing what you were doing, put the user
     // object in the db with the hash as the password!
   });
 });
