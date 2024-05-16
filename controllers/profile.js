@@ -1,5 +1,6 @@
 const Profile = require('../models/profile');
 
+
 module.exports = {
   create,
   update,
@@ -26,6 +27,7 @@ async function update(req, res) {
   }
 }
 
+
 async function deleteProfile(req, res) {
   try {
     await Profile.findByIdAndRemove(req.params.id);
@@ -37,8 +39,10 @@ async function deleteProfile(req, res) {
 
 async function index(req, res) {
   try {
+
     const profile = await Profile.find({ user: req.user._id });
     res.json(profile);
+
   } catch (err) {
     res.status(400).json(err);
   }
