@@ -73,7 +73,7 @@ export default function Signup({ handleSignUpOrLogin }) {
       // when it finishes it stores the jwt toke in localstorage,
       // we can switch the view (go to the feed page or something!)
       handleSignUpOrLogin(); // this updates the state in the app with the correct token from localstorage!
-      navigate("/goals"); // this programmatically navigates the client to the home page (refere to app.js for the '/')
+      navigate("/create-profile"); // this programmatically navigates the client to the home page (refere to app.js for the '/')
     } catch (err) {
       console.log(err.message, " this is the error singnup up");
       setError("Check your terminal, there was an error signing up!");
