@@ -52,7 +52,7 @@ export default function CreateProfilePage(props) {
       if (response.ok) {
         const profile = await response.json();
         console.log('Profile created successfully:', profile);
-        navigate('/profile'); // Redirect to the profile page
+        navigate('/goals'); // Redirect to the profile page
       } else {
         console.error('Failed to create profile');
         const errorData = await response.json();
