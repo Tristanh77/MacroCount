@@ -1,0 +1,36 @@
+ #createprofile {
+    padding: 20px;
+  }
+  
+  .words {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-form label {
+    margin-bottom: 10px;
+  }
+  
+  .profile-form input {
+    margin-left: 10px;
+    padding: 5px;
+  }
+  
+  .profile-form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-form button:hover {
+    background-color: #45a049;
+  }
+  

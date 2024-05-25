@@ -11,12 +11,20 @@ module.exports = {
 
 async function create(req, res) {
   try {
+    console.log('Request user:', req.user); // Log the req.user object
+    if (!req.user) {
+      throw new Error('User not authenticated');
+    }
     const profile = await Profile.create({ ...req.body, user: req.user._id });
     res.status(201).json(profile);
   } catch (err) {
-    res.status(400).json(err);
+    console.error('Error creating profile:', err);
+    res.status(400).json({ error: err.message, details: err });
   }
 }
+
+
+
 
 async function update(req, res) {
   try {
