@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const exerciseSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Reference to the user who created the expense
-    category: {
+    workout: {
       type: String,
       required: true,
     },

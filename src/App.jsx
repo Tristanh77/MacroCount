@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import GoalsPage from "./pages/GoalsPage/GoalsPage";
 import CreateProfilePage from "./pages/CreateProfilePage/CreateProfilePage";
+import ExercisePage from "./pages/ExercisePage/ExercisePage";
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
@@ -46,6 +47,12 @@ function App() {
           path="/create-profile"
           element={
             <CreateProfilePage loggedUser={user} handleLogout={handleLogout} />
+          }
+        />
+        <Route
+          path="/exercise"
+          element={
+            <ExercisePage loggedUser={user} handleLogout={handleLogout} />
           }
         />
         {/* <Route
