@@ -9,6 +9,7 @@ const mealSchema = new Schema(
       enum: ["Breakfast", "Lunch", "Dinner", "Snack"],
       required: true,
     },
+    food: {type: String},
     caloriesPerServing: { type: Number, required: true },
     numberOfServings: { type: Number, required: true },
     servingMacros: {

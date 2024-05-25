@@ -25,6 +25,8 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/goals", require("./routes/api/goals")); 
 app.use("/api/exercise", require("./routes/api/exercise"));
+app.use("/api/meals", require("./routes/api/meals"));
+
 
 
 
