@@ -9,6 +9,7 @@ import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import GoalsPage from "./pages/GoalsPage/GoalsPage";
 import CreateProfilePage from "./pages/CreateProfilePage/CreateProfilePage";
 import ExercisePage from "./pages/ExercisePage/ExercisePage";
+import MealPage from "./pages/MealPage/MealPage";
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
@@ -54,6 +55,10 @@ function App() {
           element={
             <ExercisePage loggedUser={user} handleLogout={handleLogout} />
           }
+        />
+        <Route
+          path="/meal"
+          element={<MealPage loggedUser={user} handleLogout={handleLogout} />}
         />
         {/* <Route
           path="/:username"

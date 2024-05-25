@@ -1,0 +1,37 @@
+#meal {
+    padding: 20px;
+  }
+  
+  .words {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .meal-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .meal-form label {
+    margin-bottom: 10px;
+  }
+  
+  .meal-form select,
+  .meal-form input {
+    margin-left: 10px;
+    padding: 5px;
+  }
+  
+  .meal-form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .meal-form button:hover {
+    background-color: #45a049;
+  }
+  
