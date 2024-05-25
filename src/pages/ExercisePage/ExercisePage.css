@@ -1,0 +1,36 @@
+#exercise {
+    padding: 20px;
+  }
+  
+  .words {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .exercise-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .exercise-form label {
+    margin-bottom: 10px;
+  }
+  
+  .exercise-form input {
+    margin-left: 10px;
+    padding: 5px;
+  }
+  
+  .exercise-form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .exercise-form button:hover {
+    background-color: #45a049;
+  }
+  
