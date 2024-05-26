@@ -50,10 +50,11 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const goal = await Goal.findOne({ _id: req.params.id, user: req.user._id });
-    if (!goal) throw new Error('Goal not found');
+    const goal = await Goal.findOne({ user: req.user._id });
+    if (!goal) throw new Error();
     res.json(goal);
   } catch (err) {
-    res.status(404).json({ error: 'Goal not found' });
+    res.status(404).json('Goal not found');
   }
 }
+

@@ -5,9 +5,8 @@ const authMiddleware = require('../../config/auth');
 
 // All paths start with '/api/profile'
 router.post('/', authMiddleware, profileCtrl.create);
-router.put('/:id', authMiddleware, profileCtrl.update);
+router.put('/me', authMiddleware, profileCtrl.update); // Update current profile
 router.delete('/:id', authMiddleware, profileCtrl.delete);
-router.get('/', authMiddleware, profileCtrl.index);
-router.get('/:id', authMiddleware, profileCtrl.show);
+router.get('/me', authMiddleware, profileCtrl.show); // Get current profile
 
 module.exports = router;
