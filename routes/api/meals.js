@@ -8,6 +8,7 @@ router.post('/', authMiddleware, mealsCtrl.create);
 router.put('/:id', authMiddleware, mealsCtrl.update);
 router.delete('/:id', authMiddleware, mealsCtrl.delete);
 router.get('/', authMiddleware, mealsCtrl.index);
+router.get('/daily', authMiddleware, mealsCtrl.dailyMeals);
 router.get('/:id', authMiddleware, mealsCtrl.show);
 
 module.exports = router;

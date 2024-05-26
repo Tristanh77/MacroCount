@@ -1,4 +1,5 @@
 const Meal = require('../models/meal');
+const { startOfDay, endOfDay } = require('date-fns');
 
 module.exports = {
   create,
@@ -6,6 +7,7 @@ module.exports = {
   delete: deleteMeal,
   index,
   show,
+  dailyMeals,
 };
 
 async function create(req, res) {
@@ -51,5 +53,16 @@ async function show(req, res) {
     res.json(meal);
   } catch (err) {
     res.status(404).json({ error: 'Meal not found' });
+  }
+}
+
+async function dailyMeals(req, res) {
+  try {
+    const start = startOfDay(new Date());
+    const end = endOfDay(new Date());
+    const meals = await Meal.find({ user: req.user._id, createdAt: { $gte: start, $lte: end } });
+    res.json(meals);
+  } catch (err) {
+    res.status(400).json(err);
   }
 }
