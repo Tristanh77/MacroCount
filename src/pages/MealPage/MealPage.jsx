@@ -62,7 +62,7 @@ export default function MealPage(props) {
           servingCarb: '',
         });
         // Optionally, navigate to another page or display a success message
-        navigate('/'); // Redirect to another page if necessary
+        navigate('/daily'); // Redirect to another page if necessary
       } else {
         console.error('Failed to save meal');
         const errorData = await response.json();

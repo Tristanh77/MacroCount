@@ -1,0 +1,93 @@
+.overview-page {
+    padding: 20px;
+    text-align: center;
+    color: #fff; /* Ensure text is visible on dark background */
+  }
+  
+  .calories-left {
+    margin-bottom: 40px;
+  }
+  
+  .calories-left h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .doughnut-container {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .doughnut-container canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .calories-left-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .calories-left-text h2 {
+    font-size: 48px;
+    color: #000;
+    margin: 0;
+  }
+  
+  .calories-left-text p {
+    font-size: 16px;
+    color: #000;
+    margin: 0;
+  }
+  
+  .calories-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .calories-burned, .calories-eaten {
+    width: 45%;
+  }
+  
+  .calories-burned h3, .calories-eaten h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .macros-table {
+    margin-top: 40px;
+  }
+  
+  .macros-table h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .macros-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .macros-table th, .macros-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .macros-table th {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  
+  .macros-table td {
+    background-color: #2c2c2c;
+  }
+  
