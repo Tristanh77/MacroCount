@@ -4,7 +4,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  profile,
 };
 
 async function signup(req, res) {
@@ -46,6 +47,16 @@ async function login(req, res) {
     return res.status(401).json(err);
   }
 }
+async function profile(req, res) {
+  try {
+    const user = await User.findById(req.user._id).select('name weightHistory');
+    if (!user) throw new Error();
+    res.json(user);
+  } catch (err) {
+    res.status(404).json('User not found');
+  }
+}
+
 
 /*----- Helper Functions -----*/
 

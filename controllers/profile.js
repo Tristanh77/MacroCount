@@ -1,6 +1,5 @@
 const Profile = require('../models/profile');
 
-
 module.exports = {
   create,
   update,
@@ -23,18 +22,28 @@ async function create(req, res) {
   }
 }
 
-
-
+async function show(req, res) {
+  try {
+    const profile = await Profile.findOne({ user: req.user._id });
+    if (!profile) throw new Error();
+    res.json(profile);
+  } catch (err) {
+    res.status(404).json('Profile not found');
+  }
+}
 
 async function update(req, res) {
   try {
-    const profile = await Profile.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const profile = await Profile.findOneAndUpdate(
+      { user: req.user._id },
+      { currentWeight: req.body.currentWeight },
+      { new: true }
+    );
     res.json(profile);
   } catch (err) {
     res.status(400).json(err);
   }
 }
-
 
 async function deleteProfile(req, res) {
   try {
@@ -47,21 +56,9 @@ async function deleteProfile(req, res) {
 
 async function index(req, res) {
   try {
-
     const profile = await Profile.find({ user: req.user._id });
     res.json(profile);
-
   } catch (err) {
     res.status(400).json(err);
-  }
-}
-
-async function show(req, res) {
-  try {
-    const profile = await Profile.findOne({ _id: req.params.id, user: req.user._id });
-    if (!profile) throw new Error();
-    res.json(profile);
-  } catch (err) {
-    res.status(404).json('Profile not found');
   }
 }

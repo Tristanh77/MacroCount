@@ -3,6 +3,8 @@ const router = express.Router();
 const usersCtrl = require("../../controllers/users");
 const multer = require('multer');
 const upload = multer();
+const authMiddleware = require('../../config/auth');
+
 /*---------- Public Routes ----------*/
 
 // whichever route is handling a file/photo upload, you use multer
@@ -10,6 +12,8 @@ const upload = multer();
 // on the signup page in the react code!
 router.post("/signup", upload.single('photo'), usersCtrl.signup);
 router.post("/login", usersCtrl.login);
+router.get('/profile', authMiddleware, usersCtrl.profile);
+
 
 // this is params for the api request coming from the react side
 // /api/users/frenchacking

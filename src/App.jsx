@@ -11,6 +11,8 @@ import CreateProfilePage from "./pages/CreateProfilePage/CreateProfilePage";
 import ExercisePage from "./pages/ExercisePage/ExercisePage";
 import MealPage from "./pages/MealPage/MealPage";
 import DailyMeals from "./pages/DailyMeals/DailyMeals";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import EditProfilePage from "./pages/EditProfilePage/EditProfilePage"; // Import EditProfilePage
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
@@ -65,12 +67,18 @@ function App() {
           path="/daily"
           element={<DailyMeals loggedUser={user} handleLogout={handleLogout} />}
         />
-        {/* <Route
-          path="/:username"
+        <Route
+          path="/profile"
           element={
-          <ProfilePage loggedUser={user} handleLogout={handleLogout} />
-        }
-      /> */}
+            <ProfilePage loggedUser={user} handleLogout={handleLogout} />
+          }
+        />
+        <Route
+          path="/edit-profile" // Add this route
+          element={
+            <EditProfilePage loggedUser={user} handleLogout={handleLogout} />
+          }
+        />
       </Routes>
     );
   }

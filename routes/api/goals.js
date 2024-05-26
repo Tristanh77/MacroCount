@@ -8,6 +8,6 @@ router.post('/', authMiddleware, goalsCtrl.create);
 router.put('/:id', authMiddleware, goalsCtrl.update);
 router.delete('/:id', authMiddleware, goalsCtrl.delete);
 router.get('/', authMiddleware, goalsCtrl.index);
-router.get('/:id', authMiddleware, goalsCtrl.show);
+router.get('/', authMiddleware, goalsCtrl.show);
 
 module.exports = router;
