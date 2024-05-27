@@ -6,10 +6,6 @@ export default function CreateProfilePage(props) {
   const [formData, setFormData] = useState({
     age: '',
     currentWeight: '',
-    currentCalories: '',
-    currentProtein: '',
-    currentFat: '',
-    currentCarb: '',
   });
 
   const navigate = useNavigate();
@@ -29,10 +25,7 @@ export default function CreateProfilePage(props) {
     const dataToSend = {
       age: Number(formData.age),
       currentWeight: Number(formData.currentWeight),
-      currentCalories: Number(formData.currentCalories),
-      currentProtein: Number(formData.currentProtein),
-      currentFat: Number(formData.currentFat),
-      currentCarb: Number(formData.currentCarb),
+      // Default values set directly in the model schema
     };
 
     // Log converted data
@@ -84,42 +77,6 @@ export default function CreateProfilePage(props) {
               type="number"
               name="currentWeight"
               value={formData.currentWeight}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Current Calories:
-            <input
-              type="number"
-              name="currentCalories"
-              value={formData.currentCalories}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Current Protein:
-            <input
-              type="number"
-              name="currentProtein"
-              value={formData.currentProtein}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Current Fat:
-            <input
-              type="number"
-              name="currentFat"
-              value={formData.currentFat}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Current Carbohydrates:
-            <input
-              type="number"
-              name="currentCarb"
-              value={formData.currentCarb}
               onChange={handleChange}
             />
           </label>

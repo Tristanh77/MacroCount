@@ -1,18 +1,26 @@
+/* Root container with max-width and centered content */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 50px; /* Adjust to match the new footer height */
+  box-sizing: border-box;
 }
 
+/* Logo styling and animations */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -32,10 +40,83 @@
   }
 }
 
+/* Card component styling */
 .card {
   padding: 2em;
 }
 
+/* Documentation link styling */
 .read-the-docs {
   color: #888;
+}
+
+/* Footer styling */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 3px 0;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 5px;
+  text-align: center;
+  font-size: 14px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.footer-link:hover {
+  background-color: #444;
+}
+
+.footer-link-center {
+  background-color: #007bff;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 0 5px;
+  padding: 8px 5px;
+}
+
+.footer-link-center:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  #root {
+    padding: 1rem;
+    padding-bottom: 50px; /* Ensure footer space */
+  }
+
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+
+  .card {
+    padding: 1em;
+  }
+
+  .footer {
+    padding: 2px 0; /* Further reduce padding for mobile */
+  }
+
+  .footer-link {
+    font-size: 12px; /* Reduce font size for mobile */
+    padding: 5px 2px; /* Adjust padding for smaller screens */
+  }
+  
+  .footer-link-center {
+    padding: 5px 2px;
+  }
 }
