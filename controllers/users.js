@@ -9,6 +9,12 @@ module.exports = {
 };
 
 async function signup(req, res) {
+  console.log('Before capitalization:', req.body.name);
+  if (req.body.name) {
+    req.body.name = capitalizeName(req.body.name);
+  }
+  console.log('After capitalization:', req.body.name);
+
   const user = new User(req.body);
   try {
     await user.save();
@@ -17,7 +23,6 @@ async function signup(req, res) {
   } catch (err) {
     console.error('Signup Error:', err);
 
-    // Check for duplicate email error
     if (err.code === 11000) {
       res.status(400).json({ error: 'Email already exists' });
     } else {
@@ -26,27 +31,23 @@ async function signup(req, res) {
   }
 }
 
-
-
 async function login(req, res) {
- 
   try {
-    const user = await User.findOne({email: req.body.email});
-   
-    if (!user) return res.status(401).json({err: 'bad credentials'});
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) return res.status(401).json({ err: 'bad credentials' });
     user.comparePassword(req.body.password, (err, isMatch) => {
-      
       if (isMatch) {
         const token = createJWT(user);
-        res.json({token});
+        res.json({ token });
       } else {
-        return res.status(401).json({err: 'bad credentials'});
+        return res.status(401).json({ err: 'bad credentials' });
       }
     });
   } catch (err) {
     return res.status(401).json(err);
   }
 }
+
 async function profile(req, res) {
   try {
     const user = await User.findById(req.user._id).select('name weightHistory');
@@ -57,13 +58,16 @@ async function profile(req, res) {
   }
 }
 
-
 /*----- Helper Functions -----*/
 
 function createJWT(user) {
   return jwt.sign(
-    {user}, // data payload
+    { user }, // data payload
     SECRET,
-    {expiresIn: '24h'}
+    { expiresIn: '24h' }
   );
+}
+
+function capitalizeName(name) {
+  return name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
