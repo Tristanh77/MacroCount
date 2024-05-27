@@ -14,7 +14,9 @@ import DailyMeals from './pages/DailyMeals/DailyMeals';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import Footer from './components/footer/Footer';
+import Header from './components/Header/Header'; // Import Header component
 import './components/Footer/Footer.css';
+import './components/Header/Header.css';
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
@@ -32,6 +34,7 @@ function App() {
 
   return (
     <>
+      <Header /> {/* Include Header component */}
       {user ? (
         <>
           <Routes>
