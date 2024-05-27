@@ -14,7 +14,12 @@ async function create(req, res) {
     if (!req.user) {
       throw new Error('User not authenticated');
     }
-    const profile = await Profile.create({ ...req.body, user: req.user._id });
+    // Set startingWeight to currentWeight if it's the first entry
+    const profileData = { ...req.body, user: req.user._id };
+    if (req.body.currentWeight) {
+      profileData.startingWeight = req.body.currentWeight;
+    }
+    const profile = await Profile.create(profileData);
     res.status(201).json(profile);
   } catch (err) {
     console.error('Error creating profile:', err);

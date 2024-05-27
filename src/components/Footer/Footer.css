@@ -1,0 +1,56 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 3px 0; /* Reduce padding to make the footer less thick */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  
+  .footer-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 5px; /* Adjust padding for links */
+    text-align: center;
+    font-size: 14px; /* Adjust font size */
+    flex: 1;
+    box-sizing: border-box;
+  }
+  
+  .footer-link:hover {
+    background-color: #444;
+  }
+  
+  .footer-link-center {
+    background-color: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 8px 5px; /* Ensure center link padding matches others */
+  }
+  
+  .footer-link-center:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .footer {
+      padding: 2px 0; /* Further reduce padding for mobile */
+    }
+  
+    .footer-link {
+      font-size: 12px; /* Reduce font size for mobile */
+      padding: 5px 2px; /* Adjust padding for smaller screens */
+    }
+    
+    .footer-link-center {
+      padding: 5px 2px; /* Adjust padding for center link */
+    }
+  }
+  
