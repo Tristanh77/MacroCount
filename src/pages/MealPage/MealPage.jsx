@@ -74,9 +74,9 @@ export default function MealPage(props) {
   };
 
   return (
-    <>
-      <section id='meal'>
-        <div className='words' id='welcome'>Meal Page</div>
+    <section id='meal'>
+      <div className='words' id='welcome'>Meal Page</div>
+      <div className="meal-form-container">
         <form onSubmit={handleSubmit} className="meal-form">
           <label>
             Category:
@@ -152,7 +152,7 @@ export default function MealPage(props) {
           </label>
           <button type="submit">Submit</button>
         </form>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
