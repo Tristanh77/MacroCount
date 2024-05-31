@@ -117,8 +117,8 @@ export default function OverviewPage() {
     datasets: [
       {
         data: [caloriesLeft, caloriesEaten],
-        backgroundColor: ['#4CAF50', '#FF6384'],
-        hoverBackgroundColor: ['#4CAF50', '#FF6384'],
+        backgroundColor: ['#102937', '#f9744b'],
+        hoverBackgroundColor: ['#091d26', '#d84f2a'],
         borderWidth: 1,
       },
     ],
@@ -139,15 +139,15 @@ export default function OverviewPage() {
       {
         label: 'Consumed',
         data: [macros.protein, macros.fat, macros.carb],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: '#f9744b',
+        borderColor: '#d6c4b0',
         borderWidth: 1,
       },
       {
         label: 'Goal',
         data: [macroGoals.protein, macroGoals.fat, macroGoals.carb],
-        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-        borderColor: 'rgba(153, 102, 255, 1)',
+        backgroundColor: '#102937',
+        borderColor: '#d6c4b0',
         borderWidth: 1,
       },
     ],
@@ -173,23 +173,23 @@ export default function OverviewPage() {
   return (
     <div className="overview-page">
       <div className="calories-left">
-        <h1>Calories Left for the Day</h1>
+        <h1 class='calories'>Calories Left for the Day</h1>
         <div className="doughnut-container">
           <Doughnut data={doughnutData} options={doughnutOptions} />
           <div className="calories-left-text">
             <h2>{caloriesLeft >= 0 ? caloriesLeft : 0}</h2>
-            <p>Remaining</p>
+            <p class='calories'>Remaining</p>
           </div>
         </div>
       </div>
       <div className="calories-summary">
         <div className="calories-burned">
           <h3>Calories Burned</h3>
-          <p>{caloriesBurned}</p>
+          <p class='calories'>{caloriesBurned}</p>
         </div>
         <div className="calories-eaten">
           <h3>Calories Eaten</h3>
-          <p>{caloriesEaten}</p>
+          <p class='calories'>{caloriesEaten}</p>
         </div>
       </div>
       <div className="macros-table">

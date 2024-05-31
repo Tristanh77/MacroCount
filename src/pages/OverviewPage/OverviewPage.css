@@ -54,7 +54,8 @@
 }
 
 .macros-table th {
-  background-color: #f2f2f2;
+  background-color: #102937;
+  color: #f9744b;
 }
 
 @media (max-width: 600px) {
@@ -70,4 +71,12 @@
   .macros-table table {
     font-size: 14px;
   }
+}
+
+.calories{
+  color: #102937;
+}
+
+h2,h3{
+  color: #102937 ;
 }
