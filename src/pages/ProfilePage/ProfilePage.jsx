@@ -141,10 +141,10 @@ export default function ProfilePage() {
         <p>Weight Goal: {goal.weightGoal} lbs</p>
       </div>
       <div className="profile-links">
-        <button class='profile-button' onClick={() => handleNavigate('/goals')}>Change Macro and Weight Goals</button>
-        <button class='profile-button'onClick={() => handleNavigate('/edit-profile')}>Edit Current Weight</button>
+        <button className='profile-button' onClick={() => handleNavigate('/goals')}>Change Macro and Weight Goals</button>
+        <button className='profile-button'onClick={() => handleNavigate('/edit-profile')}>Edit Current Weight</button>
       </div>
-      <button class='profile-button' onClick={handleLogout}>Logout</button>
+      <button className='profile-button' onClick={handleLogout}>Logout</button>
     </div>
   );
 }
