@@ -1,4 +1,5 @@
 const Exercise = require('../models/exercise');
+const { startOfDay, endOfDay } = require('date-fns');
 
 module.exports = {
   create,
@@ -6,6 +7,7 @@ module.exports = {
   delete: deleteExercise,
   index,
   show,
+  daily,
 };
 
 async function create(req, res) {
@@ -51,5 +53,19 @@ async function show(req, res) {
     res.json(exercise);
   } catch (err) {
     res.status(404).json({ error: 'Exercise not found' });
+  }
+}
+
+async function daily(req, res) {
+  try {
+    const start = startOfDay(new Date());
+    const end = endOfDay(new Date());
+    const exercises = await Exercise.find({
+      user: req.user._id,
+      createdAt: { $gte: start, $lte: end },
+    });
+    res.json(exercises);
+  } catch (err) {
+    res.status(400).json(err);
   }
 }

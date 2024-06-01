@@ -173,23 +173,23 @@ export default function OverviewPage() {
   return (
     <div className="overview-page">
       <div className="calories-left">
-        <h1 class='calories'>Calories Left for the Day</h1>
+        <h1 className='calories'>Calories Left for the Day</h1>
         <div className="doughnut-container">
           <Doughnut data={doughnutData} options={doughnutOptions} />
           <div className="calories-left-text">
             <h2>{caloriesLeft >= 0 ? caloriesLeft : 0}</h2>
-            <p class='calories'>Remaining</p>
+            <p className='calories'>Remaining</p>
           </div>
         </div>
       </div>
       <div className="calories-summary">
         <div className="calories-burned">
           <h3>Calories Burned</h3>
-          <p class='calories'>{caloriesBurned}</p>
+          <p className='calories'>{caloriesBurned}</p>
         </div>
         <div className="calories-eaten">
           <h3>Calories Eaten</h3>
-          <p class='calories'>{caloriesEaten}</p>
+          <p className='calories'>{caloriesEaten}</p>
         </div>
       </div>
       <div className="macros-table">

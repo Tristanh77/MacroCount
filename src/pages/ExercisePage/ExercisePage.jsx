@@ -7,21 +7,44 @@ export default function ExercisePage(props) {
     workout: '',
     caloriesburned: '',
   });
+  const [exercises, setExercises] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch exercises for the current day when the component mounts
+    const fetchExercises = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/exercise/daily', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        if (response.ok) {
+          const dailyExercises = await response.json();
+          setExercises(dailyExercises);
+        } else {
+          console.error('Failed to fetch exercises for today');
+        }
+      } catch (error) {
+        console.error('Error fetching exercises:', error);
+      }
+    };
+
+    fetchExercises();
+
+    // Set an interval to refresh the page at midnight
     const now = new Date();
     const millisTillMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0) - now;
-
-    const timer = setTimeout(() => {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        caloriesburned: '',
-      }));
+    const timeoutId = setTimeout(() => {
+      window.location.reload();
     }, millisTillMidnight);
 
-    return () => clearTimeout(timer); // Cleanup on unmount
+    // Clean up the timeout on component unmount
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const handleChange = (e) => {
@@ -58,8 +81,28 @@ export default function ExercisePage(props) {
           workout: '',
           caloriesburned: '',
         });
-        // Optionally, navigate to another page or display a success message
-        navigate('/'); // Redirect to the exercises page or any other page
+        // Fetch the updated list of exercises
+        const fetchExercises = async () => {
+          try {
+            const token = localStorage.getItem('token');
+            const response = await fetch('/api/exercise/daily', {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+              },
+            });
+            if (response.ok) {
+              const dailyExercises = await response.json();
+              setExercises(dailyExercises);
+            } else {
+              console.error('Failed to fetch exercises for today');
+            }
+          } catch (error) {
+            console.error('Error fetching exercises:', error);
+          }
+        };
+        fetchExercises();
       } else {
         console.error('Failed to save exercise');
         const errorData = await response.json();
@@ -74,30 +117,44 @@ export default function ExercisePage(props) {
     <>
       <section id='exercise'>
         <div className='words' id='welcome'>Exercise Page</div>
-        <div className="exercise-form-container">
-          <form onSubmit={handleSubmit} className="exercise-form">
-            <label>
-              Workout:
-              <input
-                type="text"
-                name="workout"
-                value={formData.workout}
-                onChange={handleChange}
-                required
-              />
-            </label>
-            <label>
-              Calories Burned:
-              <input
-                type="number"
-                name="caloriesburned"
-                value={formData.caloriesburned}
-                onChange={handleChange}
-                required
-              />
-            </label>
-            <button type="submit">Submit</button>
-          </form>
+        <form onSubmit={handleSubmit} className="exercise-form">
+          <label>
+            Workout:
+            <input
+              type="text"
+              name="workout"
+              value={formData.workout}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+            Calories Burned:
+            <input
+              type="number"
+              name="caloriesburned"
+              value={formData.caloriesburned}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+        <div className="daily-exercises">
+          <h2>Exercises for Today</h2>
+          {exercises.length === 0 ? (
+            <p>No exercises recorded for today.</p>
+          ) : (
+            <ul>
+              {exercises.map(exercise => (
+                <li key={exercise._id}>
+                  <div>Workout: {exercise.workout}</div>
+                  <div>Calories Burned: {exercise.caloriesburned}</div>
+                  <div>Date: {new Date(exercise.createdAt).toLocaleDateString()}</div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
     </>

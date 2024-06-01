@@ -8,6 +8,7 @@ router.post('/', authMiddleware, exercisesCtrl.create);
 router.put('/:id', authMiddleware, exercisesCtrl.update);
 router.delete('/:id', authMiddleware, exercisesCtrl.delete);
 router.get('/', authMiddleware, exercisesCtrl.index);
+router.get('/daily', authMiddleware, exercisesCtrl.daily); 
 router.get('/:id', authMiddleware, exercisesCtrl.show);
 
 module.exports = router;
