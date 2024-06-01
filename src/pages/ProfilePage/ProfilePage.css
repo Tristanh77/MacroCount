@@ -1,60 +1,71 @@
+/* Ensure html and body take up the full height of the viewport */
+html, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #e1d9cf;
+}
+
+/* Container for the profile page */
 .profile-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    background-color: #222;
-    min-height: 100vh;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .weight-progress {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
-  }
-  
-  .profile-details {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-details p {
-    margin: 10px 0;
-    font-size: 1.2rem;
-  }
-  
-  .profile-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .profile-link {
-    margin: 10px 0;
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  .logout-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: #d9534f;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .logout-button:hover {
-    background-color: #c9302c;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #e1d9cf; /* Light background for contrast */
+}
+
+/* Styling for the header text */
+.profile-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #102937; /* Primary text color */
+}
+
+/* Styling for the weight progress graph container */
+.weight-progress {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+/* Styling for the profile details */
+.profile-details {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #102937; /* Primary text color */
+}
+
+/* Styling for the profile details text */
+.profile-details p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+/* Container for the profile links */
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px; /* Limit the width of the buttons */
+}
+/* Styling for the logout button */
+.profile-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #102937; /* Updated to theme color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-button:hover {
+  background-color: #f9744b; /* Updated to theme color */
+}

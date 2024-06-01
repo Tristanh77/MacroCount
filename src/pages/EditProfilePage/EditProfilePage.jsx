@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './EditProfilePage.css';
 
 export default function EditProfilePage() {
   const [currentWeight, setCurrentWeight] = useState('');
@@ -66,19 +67,21 @@ export default function EditProfilePage() {
   return (
     <section id="editprofile">
       <div className="words" id="welcome">Edit Profile Page</div>
-      <form onSubmit={handleSubmit} className="profile-form">
-        <label>
-          Current Weight:
-          <input
-            type="number"
-            name="currentWeight"
-            value={currentWeight}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      <div className="profile-form-container">
+        <form onSubmit={handleSubmit} className="profile-form">
+          <label>
+            Current Weight:
+            <input
+              type="number"
+              name="currentWeight"
+              value={currentWeight}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </section>
   );
 }
