@@ -105,55 +105,57 @@ export default function GoalsPage(props) {
     <>
       <section id='goals'>
         <div className='words' id='welcome'>Goals Page</div>
-        <form onSubmit={handleSubmit} className="goals-form">
-          <label>
-            Calorie Goal:
-            <input
-              type="number"
-              name="calorieGoal"
-              value={formData.calorieGoal}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Protein Goal:
-            <input
-              type="number"
-              name="proteinGoal"
-              value={formData.proteinGoal}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Fat Goal:
-            <input
-              type="number"
-              name="fatGoal"
-              value={formData.fatGoal}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Carb Goal:
-            <input
-              type="number"
-              name="carbGoal"
-              value={formData.carbGoal}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Weight Goal:
-            <input
-              type="number"
-              name="weightGoal"
-              value={formData.weightGoal}
-              onChange={handleChange}
-            />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+        <div className="goals-form-container">
+          <form onSubmit={handleSubmit} className="goals-form">
+            <label>
+              Calorie Goal:
+              <input
+                type="number"
+                name="calorieGoal"
+                value={formData.calorieGoal}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              Protein Goal:
+              <input
+                type="number"
+                name="proteinGoal"
+                value={formData.proteinGoal}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Fat Goal:
+              <input
+                type="number"
+                name="fatGoal"
+                value={formData.fatGoal}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Carb Goal:
+              <input
+                type="number"
+                name="carbGoal"
+                value={formData.carbGoal}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Weight Goal:
+              <input
+                type="number"
+                name="weightGoal"
+                value={formData.weightGoal}
+                onChange={handleChange}
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </section>
     </>
   );

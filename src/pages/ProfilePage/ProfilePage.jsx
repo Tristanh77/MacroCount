@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import './ProfilePage.css'
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -82,6 +83,10 @@ export default function ProfilePage() {
     navigate('/login');
   };
 
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   if (!user || !profile || !goal) {
     return <div>Loading...</div>;
   }
@@ -92,8 +97,8 @@ export default function ProfilePage() {
       {
         label: 'Weight Progress',
         data: [profile.startingWeight || 0, profile.currentWeight, goal.weightGoal],
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: '#102937',
+        backgroundColor: 'rgba(16, 41, 55, 0.2)',
         fill: true, // Enable fill
       },
     ],
@@ -104,6 +109,7 @@ export default function ProfilePage() {
       title: {
         display: true,
         text: 'Weight Progress',
+        color: '#102937' // Title color
       },
       legend: {
         display: false,
@@ -112,7 +118,15 @@ export default function ProfilePage() {
     scales: {
       y: {
         beginAtZero: false,
+        ticks: {
+          color: '#102937' // Y-axis ticks color
+        }
       },
+      x: {
+        ticks: {
+          color: '#102937' // X-axis ticks color
+        }
+      }
     },
   };
 
@@ -127,11 +141,10 @@ export default function ProfilePage() {
         <p>Weight Goal: {goal.weightGoal} lbs</p>
       </div>
       <div className="profile-links">
-        <Link to="/goals" className="profile-link">Change Macro and Weight Goals</Link>
-        <br></br>
-        <Link to="/edit-profile" className="profile-link">Edit Current Weight</Link> {/* Add link to EditProfilePage */}
+        <button class='profile-button' onClick={() => handleNavigate('/goals')}>Change Macro and Weight Goals</button>
+        <button class='profile-button'onClick={() => handleNavigate('/edit-profile')}>Edit Current Weight</button>
       </div>
-      <button onClick={handleLogout} className="logout-button">Logout</button>
+      <button class='profile-button' onClick={handleLogout}>Logout</button>
     </div>
   );
 }
