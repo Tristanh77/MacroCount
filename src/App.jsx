@@ -14,7 +14,7 @@ import DailyMeals from './pages/DailyMeals/DailyMeals';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import CreateGoalsPage from './pages/CreateGoalsPage/CreateGoalsPage';
-import Footer from './components/footer/Footer';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import './components/Footer/Footer.css';
 import './components/Header/Header.css';
