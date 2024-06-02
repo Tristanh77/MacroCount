@@ -1,5 +1,5 @@
-const Exercise = require('../models/exercise');
 const { startOfDay, endOfDay } = require('date-fns');
+const Exercise = require('../models/exercise');
 
 module.exports = {
   create,
@@ -64,7 +64,10 @@ async function daily(req, res) {
       user: req.user._id,
       createdAt: { $gte: start, $lte: end },
     });
-    res.json(exercises);
+
+    const totalCaloriesBurned = exercises.reduce((total, exercise) => total + exercise.caloriesburned, 0);
+
+    res.json({ exercises, totalCaloriesBurned });
   } catch (err) {
     res.status(400).json(err);
   }

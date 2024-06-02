@@ -60,7 +60,7 @@
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 20px; /* Add margin-bottom to create space between exercises and footer */
 }
 
 .daily-exercises h2 {
@@ -92,4 +92,10 @@
 
 .daily-exercises li div:last-child {
   margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .daily-exercises {
+    padding-bottom: 50px; /* Add padding to the bottom on larger screens */
+  }
 }
