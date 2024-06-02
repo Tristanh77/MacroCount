@@ -1,36 +1,48 @@
- #createprofile {
-    padding: 20px;
-  }
-  
-  .words {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .profile-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .profile-form label {
-    margin-bottom: 10px;
-  }
-  
-  .profile-form input {
-    margin-left: 10px;
-    padding: 5px;
-  }
-  
-  .profile-form button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .profile-form button:hover {
-    background-color: #45a049;
-  }
-  
+#createprofile {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  height: 100vh; /* Ensure the section takes the full height of the viewport */
+}
+
+.words {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Set a fixed width for the form */
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.profile-form label {
+  margin-bottom: 10px;
+}
+
+.profile-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.profile-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.profile-form button:hover {
+  background-color: #45a049;
+}

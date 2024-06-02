@@ -10,7 +10,7 @@
 .calories-left {
   width: 100%;
   max-width: 600px;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem; /* Increased bottom margin for better spacing */
 }
 
 .doughnut-container {
@@ -34,12 +34,20 @@
   justify-content: space-around;
   width: 100%;
   max-width: 600px;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem; /* Increased bottom margin for better spacing */
+  text-align: center; /* Center text within the container */
+}
+
+.calories-summary div {
+  flex: 1; /* Ensure equal space for each div */
+  padding: 0 1rem; /* Add padding for better spacing */
 }
 
 .macros-table {
   width: 100%;
   max-width: 600px;
+  padding: 1rem; /* Added padding for better spacing */
+  box-sizing: border-box;
 }
 
 .macros-table table {
@@ -50,7 +58,7 @@
 
 .macros-table th, .macros-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 16px; /* Increased padding for better spacing */
 }
 
 .macros-table th {
@@ -73,10 +81,46 @@
   }
 }
 
-.calories{
+.calories {
   color: #102937;
 }
 
-h2,h3{
-  color: #102937 ;
+h2, h3 {
+  color: #102937;
+}
+
+/* Desktop view adjustments */
+@media (min-width: 768px) {
+  .overview-page {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .calories-left,
+  .calories-summary,
+  .macros-table {
+    width: 30%;
+  }
+
+  .calories-left,
+  .macros-table {
+    margin-bottom: 0;
+  }
+
+  .calories-summary {
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text */
+  }
+
+  .calories-summary div {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .doughnut-container {
+    max-width: 100%;
+  }
 }

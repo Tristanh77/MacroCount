@@ -21,19 +21,13 @@ export default function CreateProfilePage(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Convert all numeric fields from strings to numbers
     const dataToSend = {
       age: Number(formData.age),
       currentWeight: Number(formData.currentWeight),
-      // Default values set directly in the model schema
     };
 
-    // Log converted data
-    console.log('Converted data:', dataToSend);
-
     try {
-      const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
-      console.log('Token:', token);
+      const token = localStorage.getItem('token');
       const response = await fetch('/api/profile', {
         method: 'POST',
         headers: {
@@ -44,10 +38,8 @@ export default function CreateProfilePage(props) {
       });
       if (response.ok) {
         const profile = await response.json();
-        console.log('Profile created successfully:', profile);
-        navigate('/goals'); // Redirect to the profile page
+        navigate('/create-goals');
       } else {
-        console.error('Failed to create profile');
         const errorData = await response.json();
         console.error('Error details:', errorData);
       }

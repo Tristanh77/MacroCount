@@ -25,7 +25,7 @@ export default function ExercisePage(props) {
         });
         if (response.ok) {
           const dailyExercises = await response.json();
-          setExercises(dailyExercises);
+          setExercises(dailyExercises.exercises || []); // Ensure it's an array
         } else {
           console.error('Failed to fetch exercises for today');
         }
@@ -82,26 +82,6 @@ export default function ExercisePage(props) {
           caloriesburned: '',
         });
         // Fetch the updated list of exercises
-        const fetchExercises = async () => {
-          try {
-            const token = localStorage.getItem('token');
-            const response = await fetch('/api/exercise/daily', {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-              },
-            });
-            if (response.ok) {
-              const dailyExercises = await response.json();
-              setExercises(dailyExercises);
-            } else {
-              console.error('Failed to fetch exercises for today');
-            }
-          } catch (error) {
-            console.error('Error fetching exercises:', error);
-          }
-        };
         fetchExercises();
       } else {
         console.error('Failed to save exercise');
@@ -110,6 +90,27 @@ export default function ExercisePage(props) {
       }
     } catch (error) {
       console.error('Error saving exercise:', error);
+    }
+  };
+
+  const fetchExercises = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('/api/exercise/daily', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+      if (response.ok) {
+        const dailyExercises = await response.json();
+        setExercises(dailyExercises.exercises || []); // Ensure it's an array
+      } else {
+        console.error('Failed to fetch exercises for today');
+      }
+    } catch (error) {
+      console.error('Error fetching exercises:', error);
     }
   };
 

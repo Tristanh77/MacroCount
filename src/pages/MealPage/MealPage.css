@@ -46,6 +46,9 @@ html, #root {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   width: 100%;
   max-width: 500px; /* Ensure form container doesn't stretch too wide */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  overflow-y: auto; /* Add vertical scroll if content overflows */
+  margin-bottom: 50px; /* Add margin to the bottom to create space between form and footer */
 }
 
 /* Styling for the form labels and inputs */
@@ -83,4 +86,28 @@ html, #root {
 
 .meal-form button:hover {
   background-color: #091d26;
+}
+
+@media (min-width: 768px) {
+  .meal-form {
+    max-height: 90vh; /* Ensure the form is not too tall */
+    padding: 20px; /* Decrease padding for larger screens */
+  }
+  
+  .meal-form label {
+    margin-bottom: 10px;
+  }
+  
+  .meal-form select,
+  .meal-form input {
+    padding: 8px; /* Decrease padding */
+  }
+
+  .meal-form button {
+    padding: 8px; /* Decrease button padding */
+  }
+
+  .words {
+    font-size: 20px; /* Decrease font size */
+  }
 }
