@@ -1,5 +1,5 @@
-const User = require('../models/user');
-const jwt = require('jsonwebtoken');
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 
 module.exports = {
@@ -9,38 +9,26 @@ module.exports = {
 };
 
 async function signup(req, res) {
-  console.log('Before capitalization:', req.body.name);
-  if (req.body.name) {
-    req.body.name = capitalizeName(req.body.name);
-  }
-  console.log('After capitalization:', req.body.name);
-
   const user = new User(req.body);
   try {
     await user.save();
     const token = createJWT(user);
     res.json({ token });
   } catch (err) {
-    console.error('Signup Error:', err);
-
-    if (err.code === 11000) {
-      res.status(400).json({ error: 'Email already exists' });
-    } else {
-      res.status(400).json({ error: 'Error during signup' });
-    }
+    res.status(400).json(err);
   }
 }
 
 async function login(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(401).json({ err: 'bad credentials' });
+    if (!user) return res.status(401).json({ err: "bad credentials" });
     user.comparePassword(req.body.password, (err, isMatch) => {
       if (isMatch) {
         const token = createJWT(user);
         res.json({ token });
       } else {
-        return res.status(401).json({ err: 'bad credentials' });
+        return res.status(401).json({ err: "bad credentials" });
       }
     });
   } catch (err) {
@@ -50,11 +38,11 @@ async function login(req, res) {
 
 async function profile(req, res) {
   try {
-    const user = await User.findById(req.user._id).select('name weightHistory');
+    const user = await User.findById(req.user._id).select("name weightHistory");
     if (!user) throw new Error();
     res.json(user);
   } catch (err) {
-    res.status(404).json('User not found');
+    res.status(404).json("User not found");
   }
 }
 
@@ -64,10 +52,6 @@ function createJWT(user) {
   return jwt.sign(
     { user }, // data payload
     SECRET,
-    { expiresIn: '24h' }
+    { expiresIn: "24h" }
   );
-}
-
-function capitalizeName(name) {
-  return name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
