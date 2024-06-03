@@ -1,6 +1,7 @@
 import tokenService from "./tokenService";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:8000/api/";
+console.log("BASE_URL:", BASE_URL);
 
 function signup(user) {
   return fetch(BASE_URL + "users/signup", {
