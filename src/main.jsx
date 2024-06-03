@@ -5,9 +5,10 @@ import App from "./App";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
-// Regular React app initialization
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+// Log the environment variable to verify it
+console.log(import.meta.env.VITE_API_URL);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
       <App />
