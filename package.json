@@ -27,7 +27,8 @@
     "react-gauge-chart": "^0.5.1",
     "react-router-dom": "^6.4.3",
     "semantic-ui-react": "^2.1.5",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "homepage": "."
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
