@@ -1,24 +1,20 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
 
 export default defineConfig({
+  server: {
+    proxy: {
+      '/': {
+        target: 'http://localhost:8000'
+      }
+    }
+  },
   plugins: [react()],
   build: {
-    outDir: 'dist',
     manifest: true,
     rollupOptions: {
-      input: './src/main.jsx',
+      input: "./src/main.jsx",
     },
   },
-  server: {
-    port: 5173,
-    hmr: {
-      protocol: 'ws',
-      host: 'localhost',
-      port: 5173,
-    },
-  },
-  envPrefix: 'VITE_',
-  base: '/',
-  publicDir: 'public',
 });
