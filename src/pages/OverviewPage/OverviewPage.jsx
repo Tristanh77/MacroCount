@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './OverviewPage.css';
+import '../../components/Footer/Footer'
 import { Bar, Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import Footer from '../../components/Footer/Footer';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
@@ -212,6 +214,7 @@ export default function OverviewPage() {
         </table>
         <Bar data={macroData} options={barOptions} />
       </div>
+      <Footer />
     </div>
   );
 }
