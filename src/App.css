@@ -1,72 +1,58 @@
-/* Root container with max-width and centered content */
-#root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 50px; /* Adjust to match the new footer height */
+/* Ensure html, body, and root containers are 100% height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+}
+
+/* Root container with flexbox layout */
+#root {
+  display: flex;
+  flex-direction: column;
   background-color: #e1d9cf;
   color: rgb(19, 20, 23);
+  height: 100vh; /* Ensure root takes the full height */
 }
 
-/* Logo styling and animations */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+/* App container to take full height and allow for scrolling */
+.app {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto; /* Allow the app container to scroll */
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+/* Header styling */
+.header {
+  width: 100%;
+  background-color: #102937;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-/* Card component styling */
-.card {
-  padding: 2em;
-}
-
-/* Documentation link styling */
-.read-the-docs {
-  color: #888;
+/* Content area to handle scrolling */
+.content {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 2rem; /* Add padding as needed */
 }
 
 /* Footer styling */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  width: 100%; /* Ensure footer takes full width */
   display: flex;
   justify-content: space-between;
   background-color: #102937;
   padding: 3px 0;
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
   box-sizing: border-box;
+  flex-shrink: 0; /* Prevent the footer from shrinking */
 }
 
+/* Footer link styling */
 .footer-link {
   color: rgb(237, 238, 240);
   text-decoration: none;
@@ -97,7 +83,6 @@
 @media (max-width: 600px) {
   #root {
     padding: 1rem;
-    padding-bottom: 50px; /* Ensure footer space */
   }
 
   .logo {
@@ -117,7 +102,7 @@
     font-size: 12px; /* Reduce font size for mobile */
     padding: 5px 2px; /* Adjust padding for smaller screens */
   }
-  
+
   .footer-link-center {
     padding: 5px 2px;
   }
