@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom'; // Import useLocation
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignupPage from './pages/SignupPage/SignupPage';
@@ -21,7 +21,7 @@ import './components/Header/Header.css';
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser());
@@ -34,38 +34,37 @@ function App() {
     setUser(null);
   }
 
-  const showFooter = location.pathname !== '/create-profile' && location.pathname !== '/create-goals'; // Condition to show the footer
+  const noFooterRoutes = ['/login', '/signup', '/create-profile', '/create-goals'];
+  const showFooter = user ? (location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/signup') : !noFooterRoutes.includes(location.pathname) && location.pathname !== '/';
 
   return (
-    <div id="root">
+    <div className="app">
       <Header />
-      <div className="app">
-        <div className="content">
-          {user ? (
-            <Routes>
-              <Route path="/" element={<OverviewPage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-              <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-              <Route path="/goals" element={<GoalsPage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/create-profile" element={<CreateProfilePage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/exercise" element={<ExercisePage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/meal" element={<MealPage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/daily" element={<DailyMeals loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/profile" element={<ProfilePage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/create-goals" element={<CreateGoalsPage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/edit-profile" element={<EditProfilePage loggedUser={user} handleLogout={handleLogout} />} />
-            </Routes>
-          ) : (
-            <Routes>
-              <Route path="/" element={<HomePage loggedUser={user} handleLogout={handleLogout} />} />
-              <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-              <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-              <Route path="/*" element={<Navigate to="/login" />} />
-            </Routes>
-          )}
-        </div>
-        {showFooter && <Footer />} {/* Conditionally render the footer */}
+      <div className="content">
+        {user ? (
+          <Routes>
+            <Route path="/" element={<OverviewPage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+            <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+            <Route path="/goals" element={<GoalsPage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/create-profile" element={<CreateProfilePage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/exercise" element={<ExercisePage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/meal" element={<MealPage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/daily" element={<DailyMeals loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/profile" element={<ProfilePage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/create-goals" element={<CreateGoalsPage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/edit-profile" element={<EditProfilePage loggedUser={user} handleLogout={handleLogout} />} />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path="/" element={<HomePage loggedUser={user} handleLogout={handleLogout} />} />
+            <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+            <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+            <Route path="/*" element={<Navigate to="/login" />} />
+          </Routes>
+        )}
       </div>
+      {showFooter && <Footer />}
     </div>
   );
 }

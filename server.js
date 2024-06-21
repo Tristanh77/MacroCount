@@ -37,10 +37,9 @@ app.get('/*', function(req, res) {
 });
 
 
-const { PORT = 8000 } = process.env;
-app.listen(PORT, () => {
-  console.log();
-  console.log(`  App running in port ${PORT}`);
-  console.log();
-  console.log(`  > Local: \x1b[36mhttp://localhost:\x1b[1m${PORT}/\x1b[0m`);
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  console.log(`App running on port ${port}`);
+  console.log(`> Local: http://localhost:${port}/`);
 });

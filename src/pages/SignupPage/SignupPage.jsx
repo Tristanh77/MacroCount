@@ -4,12 +4,13 @@ import {
   Grid,
   Header,
   Segment,
+  Message,
 } from "semantic-ui-react";
-
 import { useState } from "react";
 import userService from "../../utils/userService";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./SignupPage.css"; // Add the CSS import
 
 export default function Signup({ handleSignUpOrLogin }) {
   const navigate = useNavigate();
@@ -45,9 +46,13 @@ export default function Signup({ handleSignUpOrLogin }) {
   }
 
   return (
-    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+    <Grid
+      textAlign="center"
+      style={{ height: "100vh" }}
+      verticalAlign="top" // Changed from "middle" to "top"
+    >
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="purple" textAlign="center">
+        <Header as="h2" style={{ color: '#f9744b' }} textAlign="center">
           Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -83,12 +88,21 @@ export default function Signup({ handleSignUpOrLogin }) {
               onChange={handleChange}
               required
             />
-            <Button type="submit" className="btn">
+            <Button
+              style={{ backgroundColor: '#102937', color: 'white', borderRadius: '5px' }} // Matching the style
+              fluid
+              size="large"
+              type="submit"
+              className="btn"
+            >
               Signup
             </Button>
           </Segment>
-          {error ? <ErrorMessage error={error} /> : null}
         </Form>
+        <Message>
+          Already have an account? <Link to="/login">Login Here</Link>
+        </Message>
+        {error ? <ErrorMessage error={error} /> : null}
       </Grid.Column>
     </Grid>
   );
