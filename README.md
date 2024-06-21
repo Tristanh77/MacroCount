@@ -1,40 +1,36 @@
+# MacroCount
 
-## Setup 
+MacroCount is a mobile first macro tracker. Users have the customablitly they desire with all their tracking needs. MacroCount is designed to be very simple, quick, and easy to use. Users can sign up and input their starting onformation including current weight, weight goals, and macro/calorie goals. The main overview page includes 2 graphs. One containing the amount of calories left for that day by calculating the users set calorie goal minus the food eaten for the day plus the exercise done for the day. The other graph shows the days progress to the users different macro goals. The user may switch between different pages to input a meal or exercise and view the ones already input for that day. The profile page is where the user can see their starting weight, current weight and goal weight on a graph to track their progress. This is also where they can change their current weight as well as macro and weight goals. Everything will reset at midnight everyday to be ready to go for the next. 
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv Mern-Vite-Boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls -a` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+## Screenshots
+Desktop View
+<img src="https://i.imgur.com/tooHryW.png">
+Mobile View
+<img src="https://i.imgur.com/lc3T8CI.png">
+Add Meals Page
+<img src="https://i.imgur.com/2cGGZak.png">
+Meals Added For The Day
+<img src="https://i.imgur.com/Mzw8hUb.png">
+Exercise Page
+<img src="https://i.imgur.com/T196qM3.png">
+Profile Page
+<img src="https://i.imgur.com/5LIq9mF.png">
 
 
-#### Setup your git repo
+## Technologies used 
+Express.js, CSS, HTML, Javascipt, MongoDb, Semantic ui, React, and Token based authentication.
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+## Getting Started
+Deployed app: https://macrocount.onrender.com/
 
-it should look like this
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin main
-```
+Trello board:
+https://trello.com/b/fMhLFaf0/macrocount
 
-#### Setup the App
 
-```npm install```
+## Next Steps 
+1. Aloow users to delete meals and exercises inputed
 
-*DOTENV*
+2. Have a variety of foods with macros preset built in if users choose
 
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+3. Redesign the landing page to make it more appealing
