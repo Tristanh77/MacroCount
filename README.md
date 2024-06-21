@@ -23,7 +23,7 @@ https://trello.com/b/fMhLFaf0/macrocount
 
 
 ## Next Steps 
-1. Aloow users to delete meals and exercises inputed
+1. Allow users to delete meals and exercises inputed
 
 2. Have a variety of foods with macros preset built in if users choose
 
