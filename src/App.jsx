@@ -35,7 +35,7 @@ function App() {
   }
 
   const noFooterRoutes = ['/login', '/signup', '/create-profile', '/create-goals'];
-  const showFooter = user ? (location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/signup') : !noFooterRoutes.includes(location.pathname) && location.pathname !== '/';
+  const showFooter = user ? (location.pathname !== '/' && !noFooterRoutes.includes(location.pathname)) : !noFooterRoutes.includes(location.pathname) && location.pathname !== '/';
 
   return (
     <div className="app">
