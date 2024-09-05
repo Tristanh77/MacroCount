@@ -12,7 +12,7 @@ MacroCount is a mobile-first macro tracking app designed to simplify nutrition a
 
 
 ## Technologies used 
-Express.js, CSS, HTML, Javascipt, MongoDb, Semantic ui, React, and Token based authentication.
+Express.js, CSS, HTML, Javascipt, MongoDb, Semantic ui, React, Next.JS and Token based authentication.
 
 ## Getting Started
 Deployed app: https://macrocount.onrender.com/
