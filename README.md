@@ -1,6 +1,6 @@
 # MacroCount
 
-MacroCount is a mobile first macro tracker. Users have the customablitly they desire with all their tracking needs. MacroCount is designed to be very simple, quick, and easy to use. Users can sign up and input their starting onformation including current weight, weight goals, and macro/calorie goals. The main overview page includes 2 graphs. One containing the amount of calories left for that day by calculating the users set calorie goal minus the food eaten for the day plus the exercise done for the day. The other graph shows the days progress to the users different macro goals. The user may switch between different pages to input a meal or exercise and view the ones already input for that day. The profile page is where the user can see their starting weight, current weight and goal weight on a graph to track their progress. This is also where they can change their current weight as well as macro and weight goals. Everything will reset at midnight everyday to be ready to go for the next. 
+MacroCount is a mobile-first macro tracking app designed to simplify nutrition and fitness tracking. Users can customize their weight, macro, and calorie goals, and easily log meals and exercises. The app calculates daily progress, helping users stay on track with their fitness goals. With daily resets, MacroCount ensures a fresh start each day, making it an intuitive, efficient tool for tracking macros, calories, and weight over time.
 
 ## Screenshots
 <img src="https://i.imgur.com/tooHryW.png">
