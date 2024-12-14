@@ -1,61 +1,62 @@
 import React, { useState } from "react";
-import "./LoginPage.css";
+import { Button, Form, Header, Segment, Message, Icon } from "semantic-ui-react";
+import { useNavigate, Link } from "react-router-dom";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
-import { useNavigate, Link } from "react-router-dom";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Message,
-  Segment,
-} from "semantic-ui-react";
+import "./LoginPage.css";
 
-export default function LoginPage(props) {
+export default function LoginPage({ handleSignUpOrLogin }) {
   const [error, setError] = useState("");
-  const [state, setState] = useState({
-    email: "",
-    password: "",
-  });
+  const [state, setState] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
-  function handleChange(e) {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       await userService.login(state);
-      props.handleSignUpOrLogin();
+      handleSignUpOrLogin();
       navigate("/");
     } catch (err) {
       setError(err.message);
     }
   }
 
+  function handleChange(e) {
+    setState({ ...state, [e.target.name]: e.target.value });
+  }
+
   return (
-    <Grid
-      textAlign="center"
-      style={{ height: "100vh" }}
-      verticalAlign="top" // Changed from "middle" to "top"
-    >
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header id="log" as="h2" style={{ color: '#f9744b' }} textAlign="center">
-          Log-in To Your Account
+    <div className="auth-page">
+      <div className="animated-bg"></div>
+      <div className="orb orb1"></div>
+      <div className="orb orb2"></div>
+      <div className="orb orb3"></div>
+      <div className="rotating-ring"></div>
+
+      <div className="auth-card">
+        <div className="brand-container">
+          <Icon name="heartbeat" size="large" className="brand-icon" />
+          <span className="brand-name">MacroCount</span>
+        </div>
+        <Header as="h2" className="auth-header" textAlign="center">
+          Log In To Your Account
         </Header>
+        <p className="auth-subtagline">
+          Welcome back! Continue achieving your nutrition goals.
+        </p>
+        <ul className="auth-features-list">
+          <li><Icon name="check circle" /> Access your custom macro targets</li>
+          <li><Icon name="check circle" /> Review past meals & workouts</li>
+          <li><Icon name="check circle" /> Stay on track with daily insights</li>
+        </ul>
+
         <Form onSubmit={handleSubmit}>
-          <Segment stacked>
+          <Segment stacked className="auth-segment">
             <Form.Input
               type="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               value={state.email}
               onChange={handleChange}
               required
@@ -63,27 +64,26 @@ export default function LoginPage(props) {
             <Form.Input
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="Password"
               value={state.password}
               onChange={handleChange}
               required
             />
             <Button
-              style={{ backgroundColor: '#102937', color: 'white', borderRadius: '5px' }} // Matching the style
               fluid
               size="large"
               type="submit"
-              className="btn"
+              className="auth-btn primary-btn"
             >
               Login
             </Button>
           </Segment>
         </Form>
-        <Message>
-          New to us? <Link to="/signup">Sign Up</Link>
+        <Message className="auth-message">
+          New to us? <Link to="/signup" className="auth-link">Sign Up</Link>
         </Message>
-        {error ? <ErrorMessage error={error} /> : null}
-      </Grid.Column>
-    </Grid>
+        {error && <ErrorMessage error={error} />}
+      </div>
+    </div>
   );
 }
