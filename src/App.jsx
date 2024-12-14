@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
+      {/* <Header /> */}
       <div className="content">
         {user ? (
           <Routes>
